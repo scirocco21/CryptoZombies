@@ -28,6 +28,7 @@ contract ZombieFactory {
     }
 
     function _generateRandomDna(string _str) private view returns (uint) {
+    require(ownerZombieCount[msg.sender] == 0);
         uint rand = uint(keccak256(abi.encodePacked(_str)));
         return rand % dnaModulus;
     }
